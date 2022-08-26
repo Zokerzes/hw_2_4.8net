@@ -123,9 +123,39 @@ namespace hw1
 	{
 		public void StartTask2()
 		{
-			
+            int[,] b = new int[5, 5];
+            Random rnd = new Random();
+            for (int i = 0; i < b.GetLength(0); i++)
+            {
+                for (int j = 0; j < b.GetLength(1); j++)
+                {
+                    int r = rnd.Next(-100,100);
+					b[i, j] = r;
+                }
+            }
+            for (int i = 0; i < b.GetLength(0); i++)
+            {
+                for (int j = 0; j < b.GetLength(1); j++)
+                {
 
-		}
+                    Console.Write(b[i, j] + "\t");
+                }
+                Console.WriteLine();
+            }
+			int max = b[0,0], min= b[0, 0], iMin, iMax;
+            for (int i = 0; i < b.GetLength(0); i++)
+            {
+                for (int j = 0; j < b.GetLength(1); j++)
+                {
+
+                   
+                }
+                
+            }
+
+
+
+        }
 	}
 	class Task3
 	{
