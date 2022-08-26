@@ -121,7 +121,11 @@ namespace hw1
     }
 	class Task2
 	{
-		public void StartTask2()
+        /*Дан двумерный массив размерностью 5×5, заполнен-
+ный случайными числами из диапазона от –100 до 100.
+Определить сумму элементов массива, расположенных
+между минимальным и максимальным элементами.*/
+        public void StartTask2()
 		{
             int[,] b = new int[5, 5];
             Random rnd = new Random();
@@ -142,18 +146,31 @@ namespace hw1
                 }
                 Console.WriteLine();
             }
-			int max = b[0,0], min= b[0, 0], iMin, iMax;
+			int max = b[0, 0], min = b[0, 0];
+			int[] iMin = new int[2];
+			int[] iMax = new int[2];
+			
             for (int i = 0; i < b.GetLength(0); i++)
             {
                 for (int j = 0; j < b.GetLength(1); j++)
                 {
-
-                   
+					if (max < b[i, j]) 
+					{
+						max = b[i, j];
+						iMax[0] = i;
+						iMax[1] = j;
+					}
+                    if (min > b[i, j])
+                    {
+                        min = b[i, j];
+                        iMin[0] = i;
+                        iMin[1] = j;
+                    }
                 }
-                
             }
 
-
+            Console.WriteLine("min = {4} min i = {0} min j = {1}\nmax = {5} max i = {2} max J = {3}",
+				iMin[0]+1, iMin[1] + 1, iMax[0] + 1, iMax[1] + 1, min,max);
 
         }
 	}
