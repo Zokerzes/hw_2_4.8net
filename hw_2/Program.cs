@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Text;
 using System.Threading;
+using System.Xml.Linq;
+
 namespace hw1
 {
 	class Task1
@@ -127,7 +129,9 @@ namespace hw1
 между минимальным и максимальным элементами.*/
         public void StartTask2()
 		{
-            int[,] b = new int[5, 5];
+            Console.WriteLine();
+            int row=5,col =5;
+            int[,] b = new int[row, col];
             Random rnd = new Random();
             for (int i = 0; i < b.GetLength(0); i++)
             {
@@ -137,46 +141,65 @@ namespace hw1
 					b[i, j] = r;
                 }
             }
-            for (int i = 0; i < b.GetLength(0); i++)
+ 
+            int ii = 0,iMax=0,iMin=0; // итератор 1 мерного массива
+            int[] bStr = new int[row * col];
+            
+            for ( int i = 0; i < b.GetLength(0); i++)
             {
                 for (int j = 0; j < b.GetLength(1); j++)
                 {
-
-                    Console.Write(b[i, j] + "\t");
+					bStr[ii] = b[i, j];
+					ii++;
+					Console.Write(b[i, j] + " ");
                 }
                 Console.WriteLine();
             }
-			int max = b[0, 0], min = b[0, 0];
-			int[] iMin = new int[2];
-			int[] iMax = new int[2];
-			
-            for (int i = 0; i < b.GetLength(0); i++)
+            Console.WriteLine(); Console.WriteLine(); Console.WriteLine();
+
+            foreach (int i in bStr)
+			{
+				Console.Write(i+" ");
+			}
+			Console.WriteLine();
+
+            int max = bStr[0], min = bStr[0],start=0,stop=0;
+            for (int i = 0; i < bStr.GetLength(0); i++)
             {
-                for (int j = 0; j < b.GetLength(1); j++)
+                if(max < bStr[i])
+				{
+					max = bStr[i];
+					iMax = i;
+				};
+                if (min > bStr[i])
                 {
-					if (max < b[i, j]) 
-					{
-						max = b[i, j];
-						iMax[0] = i;
-						iMax[1] = j;
-					}
-                    if (min > b[i, j])
-                    {
-                        min = b[i, j];
-                        iMin[0] = i;
-                        iMin[1] = j;
-                    }
-                }
+                    min = bStr[i];
+                    iMin = i;
+                };
             }
-
-            Console.WriteLine("min = {4} min i = {0} min j = {1}\nmax = {5} max i = {2} max J = {3}",
-				iMin[0]+1, iMin[1] + 1, iMax[0] + 1, iMax[1] + 1, min,max);
-
+            Console.WriteLine("iMax = {0} max = {1}\niMin = {2} min = {3}",iMax,max,iMin,min);
+			if (iMax > iMin) 
+			{
+				start = iMin;
+				stop = iMax;
+			}
+			else 
+			{
+                start = iMax;
+				stop = iMin;
+            }
+			int sum = 0;
+			for (int i = start+1; i < stop; i++)
+			{
+				sum += bStr[i];
+			}
+            Console.WriteLine("Сумма элементов массива, расположенных между минимальным и максимальным элементами\nsum = " + sum);
         }
-	}
+    }
 	class Task3
 	{
-		public void StartTask3()
+        /*Пользователь вводит строку с клавиатуры. Необходимо зашифровать данную строку используя шифр Цезаря.*/
+        public void StartTask3()
 		{
 			
 
