@@ -263,13 +263,48 @@ namespace hw1
 				Console.WriteLine();
 			}
 		}
+
+		public void sumMatrix(int [,] matrixA, int i, int r,int [,] matrixB, int rr, int j) 
+		{
+			if(r==j && i == rr) 
+			{ 
+				Console.WriteLine("сумма матриц A ");
+				for (int ii = 0; ii < matrixA.GetLength(0); ii++)	
+				{
+					for (int jj = 0; jj < matrixA.GetLength(1); jj++)
+					{
+						Console.Write(matrixA[ii,jj]+ "\t");
+					}
+					Console.WriteLine();
+				}
+				Console.WriteLine("и В ");
+				for (int ii = 0; ii < matrixB.GetLength(0); ii++)	
+				{
+					for (int jj = 0; jj < matrixB.GetLength(1); jj++)
+					{
+						Console.Write(matrixB[ii,jj]+ "\t");
+					}
+					Console.WriteLine();
+				}
+				Console.WriteLine("Равна ");
+				for (int ii = 0; ii < matrixA.GetLength(0); ii++)	
+				{
+					for (int jj = 0; jj < matrixA.GetLength(1); jj++)
+					{
+						Console.Write(matrixA[ii,jj]+matrixB[ii,jj] +"\t");
+					}
+					Console.WriteLine();
+				}
+			}
+			else Console.WriteLine("Ошибка: попытка сложения разно");
+		}
 		public void StartTask4()
 		{
-			Console.Write("Введите размеры матриц\n\t\t матрица Аi = ");
+			Console.Write("Введите размеры матриц\n матрица Аi =      ");
 			int i = int.Parse(Console.ReadLine());
-			Console.Write("\t\t матрица Аj = Bi = ");
+			Console.Write(" матрица Аj = Bi = ");
 			int r = int.Parse(Console.ReadLine());
-			Console.Write("\t\t матрица Bj = ");
+			Console.Write(" матрица Bj =      ");
 			int j = int.Parse(Console.ReadLine());
 			Random ran = new Random ();
 			int[,] matrixA = new int[i,r];
@@ -312,7 +347,7 @@ namespace hw1
 			int k = ran.Next(10);
 
 			multiOnNumber(matrixA, i, r, k);
-			
+			sumMatrix(matrixA, i, r, matrixB, r, j);
 			
 
 
