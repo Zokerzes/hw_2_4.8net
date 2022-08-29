@@ -202,14 +202,27 @@ namespace hw1
         /*Пользователь вводит строку с клавиатуры. Необходимо зашифровать данную строку используя шифр Цезаря.*/
         public void StartTask3()
 		{
-			string userInput, cripted, uncripted;
+			string userInput;
 			userInput = Console.ReadLine();
+			if(userInput=="") userInput = "Эта строка зашифровывается кодом цезаря";
+			int strafe = 10;
+			char [] ChIn = userInput.ToCharArray();
 
+			Console.Write(ChIn); Console.WriteLine(" - start value");
 
+			for (int i = 0; i < ChIn.GetLength(0); i++)
+			{
+				ChIn[i] = ((char)(Convert.ToInt32(ChIn[i])+strafe));   
+			}
 
+			Console.Write(ChIn); Console.WriteLine(" - cripted");
 
+			for (int i = 0; i < ChIn.GetLength(0); i++)
+			{
+				ChIn[i] = ((char)(Convert.ToInt32(ChIn[i])-strafe));   
+			}
 
-
+			Console.Write(ChIn);  Console.WriteLine(" - uncripted");
 
 		}
 	}
