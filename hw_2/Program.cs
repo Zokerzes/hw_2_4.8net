@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Xml.Linq;
 using Microsoft.Win32;
+using System.Security.Cryptography.X509Certificates;
 
 namespace hw1
 {
@@ -228,10 +229,92 @@ namespace hw1
 	}
 	class Task4
 	{
-		public void StartTask4()
-		
+
+		/*Создайте приложение, которое производит операции над матрицами:
+		■■Умножение матрицы на число;	bi,j = k · ai,j
+		■■Сложение матриц;				Аm×n + Bm×n = Cm×n
+		■■Произведение матриц.*/
+
+		public void multiOnNumber(int [,] matrixA, int i, int r, int k) 
 		{
+			Console.WriteLine("умножение матрицы A ");
+			for (int ii = 0; ii < matrixA.GetLength(0); ii++)	//вывод матрицы А
+			{
+				for (int jj = 0; jj < matrixA.GetLength(1); jj++)
+				{
+					Console.Write(matrixA[ii,jj]+ "\t");
+				}
+				Console.WriteLine();
+			}
+			Console.WriteLine("на число k = "+k);
+			for (int ii = 0; ii < matrixA.GetLength(0); ii++)	//сборка матрицы А
+			{
+				for (int jj = 0; jj < matrixA.GetLength(1); jj++)
+				{
+					matrixA[ii,jj] *= k;
+				}
+			}
+			for (int ii = 0; ii < matrixA.GetLength(0); ii++)	//вывод матрицы А
+			{
+				for (int jj = 0; jj < matrixA.GetLength(1); jj++)
+				{
+					Console.Write(matrixA[ii,jj]+ "\t");
+				}
+				Console.WriteLine();
+			}
+		}
+		public void StartTask4()
+		{
+			Console.Write("Введите размеры матриц\n\t\t матрица Аi = ");
+			int i = int.Parse(Console.ReadLine());
+			Console.Write("\t\t матрица Аj = Bi = ");
+			int r = int.Parse(Console.ReadLine());
+			Console.Write("\t\t матрица Bj = ");
+			int j = int.Parse(Console.ReadLine());
+			Random ran = new Random ();
+			int[,] matrixA = new int[i,r];
+			int[,] matrixB = new int[r,j];
+			int[,] matrixC = new int[i,j];
+			for (int ii = 0; ii < matrixA.GetLength(0); ii++)	//сборка матрицы А
+			{
+				for (int jj = 0; jj < matrixA.GetLength(1); jj++)
+				{
+					int rand = ran.Next(-10,10);
+					matrixA[ii,jj] = rand;
+				}
+			}
+			for (int ii = 0; ii < matrixB.GetLength(0); ii++)	//сборка матрицы B
+			{
+				for (int jj = 0; jj < matrixB.GetLength(1); jj++)
+				{
+					int rand = ran.Next(-10,10);
+					matrixB[ii,jj] = rand;
+				}
+			}
+			for (int ii = 0; ii < matrixA.GetLength(0); ii++)	//вывод матрицы А
+			{
+				for (int jj = 0; jj < matrixA.GetLength(1); jj++)
+				{
+					Console.Write(matrixA[ii,jj]+ "\t");
+				}
+				Console.WriteLine();
+			}
+			Console.WriteLine();Console.WriteLine();
+			for (int ii = 0; ii < matrixB.GetLength(0); ii++)	//вывод матрицы B
+			{
+				for (int jj = 0; jj < matrixB.GetLength(1); jj++)
+				{
+					Console.Write(matrixB[ii,jj]+ "\t");
+				}
+				Console.WriteLine();
+			}
+			Console.WriteLine();
+			int k = ran.Next(10);
+
+			multiOnNumber(matrixA, i, r, k);
 			
+			
+
 
 		}
 	}
