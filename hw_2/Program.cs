@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using System.Text;
 using System.Threading;
 using System.Xml.Linq;
+using Microsoft.Win32;
 
 namespace hw1
 {
@@ -201,7 +202,14 @@ namespace hw1
         /*Пользователь вводит строку с клавиатуры. Необходимо зашифровать данную строку используя шифр Цезаря.*/
         public void StartTask3()
 		{
-			
+			string userInput, cripted, uncripted;
+			userInput = Console.ReadLine();
+
+
+
+
+
+
 
 		}
 	}
