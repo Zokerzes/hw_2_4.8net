@@ -233,7 +233,7 @@ namespace hw1
 		/*Создайте приложение, которое производит операции над матрицами:
 		■■Умножение матрицы на число;	bi,j = k · ai,j
 		■■Сложение матриц;				Аm×n + Bm×n = Cm×n
-		■■Произведение матриц.*/
+		■■Произведение матриц.          Cij=SUM(from 1 to r)(Air*Bir) */  
 
 		public void multiOnNumber(int [,] matrixA, int i, int r, int k) 
 		{
@@ -296,8 +296,45 @@ namespace hw1
 					Console.WriteLine();
 				}
 			}
-			else Console.WriteLine("Ошибка: попытка сложения разно");
+			else Console.WriteLine("Сумма матриц - Ошибка: попытка сложения разноразмерных матриц");
 		}
+		public void multyMatrix(int [,] matrixA, int i, int r,int [,] matrixB, int rr, int j) 
+		{
+			Console.WriteLine("произведение матриц A ");
+			for (int ii = 0; ii < matrixA.GetLength(0); ii++)	
+			{
+				for (int jj = 0; jj < matrixA.GetLength(1); jj++)
+				{
+					Console.Write(matrixA[ii,jj]+ "\t");
+				}
+				Console.WriteLine();
+			}
+			Console.WriteLine("и В ");
+			for (int ii = 0; ii < matrixB.GetLength(0); ii++)	
+			{
+				for (int jj = 0; jj < matrixB.GetLength(1); jj++)
+				{
+					Console.Write(matrixB[ii,jj]+ "\t");
+				}
+				Console.WriteLine();
+			}
+			Console.WriteLine("Равно ");
+			for (int ii = 0; ii < matrixA.GetLength(0); ii++)	
+			{
+				for (int jj = 0; jj < matrixA.GetLength(1); jj++)
+				{
+					int tempSum=0;
+					for (int k = 0; k < r; k++)
+					{
+						tempSum+= matrixA[ii, k] * matrixB[k,jj];
+					}
+					Console.Write(tempSum+ "\t");
+					
+				}
+				Console.WriteLine();
+			}
+		}
+
 		public void StartTask4()
 		{
 			Console.Write("Введите размеры матриц\n матрица Аi =      ");
@@ -344,13 +381,11 @@ namespace hw1
 				Console.WriteLine();
 			}
 			Console.WriteLine();
-			int k = ran.Next(10);
+			int k = ran.Next(1,10);
 
 			multiOnNumber(matrixA, i, r, k);
 			sumMatrix(matrixA, i, r, matrixB, r, j);
-			
-
-
+			multyMatrix(matrixA, i, r, matrixB, r, j);
 		}
 	}
 	class Task5
