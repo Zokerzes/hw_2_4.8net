@@ -10,7 +10,7 @@ using Microsoft.Win32;
 using System.Security.Cryptography.X509Certificates;
 using System.Linq.Expressions;
 
-namespace hw1
+namespace hw2
 {
 	class Task1
 	{
