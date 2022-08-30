@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -7,6 +8,7 @@ using System.Threading;
 using System.Xml.Linq;
 using Microsoft.Win32;
 using System.Security.Cryptography.X509Certificates;
+using System.Linq.Expressions;
 
 namespace hw1
 {
@@ -390,19 +392,37 @@ namespace hw1
 	}
 	class Task5
 	{
-		public void StartTask5()
+        /*Пользователь с клавиатуры вводит в строку арифметическое
+         выражение. Приложение должно посчитать его результат.*/
+        public void StartTask5()
 		
 		{
-			
-		}
+			Console.WriteLine("Введите строку математического выражения");
+            string expression = Console.ReadLine();
+            DataTable table = new DataTable();
+            table.Columns.Add("expression", typeof(string), expression);
+            DataRow row = table.NewRow();
+            table.Rows.Add(row);
+            Console.WriteLine(double.Parse((string)row["expression"]));
+        }
 	}
 	class Task6
 	{
-		public void StartTask6()
+        /*Пользователь с клавиатуры вводит некоторый текст.
+		Приложение должно изменять регистр первой буквы
+		каждого предложения на букву в верхнем регистре.*/
+        public void StartTask6()
 		{
-
-			
-		}
+			string userInput = Console.ReadLine();
+			string result="";
+            string[] strArr = userInput.Split(".".ToCharArray(),StringSplitOptions.RemoveEmptyEntries);
+            foreach (string str in strArr)
+			{
+				string tempStr = str.Trim();
+				result += tempStr[0].ToString().ToUpper() + tempStr.Substring(1) + ". ";   
+            }
+            Console.WriteLine(result); 
+        }
 	}
 	class Task7
 	{
