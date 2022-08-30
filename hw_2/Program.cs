@@ -426,11 +426,44 @@ namespace hw1
 	}
 	class Task7
 	{
-		public void StartTask7()
+        /*Создайте приложение, проверяющее текст на недопустимые слова. 
+        Если недопустимое слово найдено, оно должно быть заменено на набор символов *. 
+		*/
+        public void StartTask7()
 		{
-			
-		}
+			string userInput;
+            Console.WriteLine("Введите текст для форматирования \n " +
+                "или оставьте ввод пустым для текста по умаолчанию");
+			userInput = Console.ReadLine();
+			if (userInput == "")
+			{
+				userInput = "And by opposing end them? To die: to sleep;\r\n" +
+				"No more; and by a sleep to say we end\r\n" +
+				"The heart-ache and the thousand natural shocks\r\n" +
+				"That flesh is heir to, 'tis a consummation\r\n" +
+				"Devoutly to be wish'd. To die, to sleep";
+			}
+			string censored;
+			Console.WriteLine("введите слово для его цензуры \n " +
+                "или оставьте ввод пустым для текста по умаолчанию");
+            censored = Console.ReadLine();
+            if (censored == "")
+			{
+				censored = "die";
+			}
 
+            string outCens = "";
+            for (int i = 0; i < censored.Length; i++)
+			{
+				outCens += "*"; 
+			}
+            Console.WriteLine(userInput);
+            userInput =userInput.Replace(censored, outCens);
+			Console.WriteLine();
+			Console.WriteLine($"закрытое слово {censored}");
+            Console.WriteLine();
+            Console.WriteLine(userInput);
+        }
 	}
 	class HomeWork
 	{
