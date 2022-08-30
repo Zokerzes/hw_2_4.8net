@@ -507,8 +507,6 @@ namespace hw2
 					break;
 
 			}
-
-
 		}
 	}
 }
