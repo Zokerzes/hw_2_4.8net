@@ -384,7 +384,7 @@ namespace hw1
 			int k = ran.Next(1,10);
 
 			multiOnNumber(matrixA, i, r, k);
-			sumMatrix(matrixA, i, r, matrixB, r, j);
+			sumMatrix(matrixA, i, r, matrixB, r, j); 
 			multyMatrix(matrixA, i, r, matrixB, r, j);
 		}
 	}
